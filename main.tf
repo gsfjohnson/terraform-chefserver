@@ -53,8 +53,7 @@ resource "template_file" "script" {
   template = "chef-server-install.sh"
 
   vars {
-    hostname = "${var.aws_r53_record_name}"
-    domainname = "${var.aws_r53_zone_domain}"
+    "fqdn" = "${var.aws_r53_record_name}.${var.aws_r53_zone_domain}"
   }
 
   lifecycle {
