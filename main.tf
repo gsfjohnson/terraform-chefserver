@@ -71,6 +71,11 @@ resource "aws_instance" "chefserver" {
   user_data = "${template_file.script.rendered}"
   availability_zone = "${var.aws_availability_zone}"
 
+  root_block_device {
+    volume_size = 8
+    delete_on_termination = true
+  }
+
   tags {
     Name= "${var.aws_r53_record_name}"
     Owner = "${var.owner_tag}"
